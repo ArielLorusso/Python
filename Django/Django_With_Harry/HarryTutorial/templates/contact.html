@@ -1,0 +1,48 @@
+{% extends "base.html" %} <!-- MUST BE AT TOP of BODY-->
+
+{%    block title %} Contact {% endblock title %}
+
+{% block body %}
+<!-- EMMETH WORKS OUTSIDE PROJECT FOLDER -->
+    <h1>This is my CONTACT</h1>
+
+    <dib class="container">
+      <h2 class="center m-3"> contact me </h2>
+
+      <form action="/contact" method="post">
+        {% csrf_token %}   <!--  CROS SITE REQUEST FORGERY   ATTACK -->
+        <div class="m-3">
+            <label for="name" class="form-label"> Name </label>
+            <input type="text" name="name" class="form-control" id="name" placeholder="Your name"/>
+        </div>
+    
+        <div class="m-3">
+            <label for="email" class="form-label"> Email address </label>
+            <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com"/>
+        </div>
+    
+        <div class="m-3">
+            <label for="phone" class="form-label"> Phone Number </label>
+            <input type="tel" name="phone" class="form-control" id="phone" placeholder="Your phone number"/>
+        </div>
+    
+        <div class="m-3">
+            <label for="desc" class="form-label"> Explain your concerns </label>
+            <textarea class="form-control" name="desc" id="desc" rows="3"></textarea>
+        </div>
+    
+        <select class="form-select m-3" aria-label="Default select example" name="selection">
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+
+        <button type="submit" class="btn btn-success m-3">Submit</button>
+
+      </form>
+    </dib>
+    
+
+{% endblock body %}
+    
