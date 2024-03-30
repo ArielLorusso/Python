@@ -374,3 +374,10 @@ a "ref" is a pointer to a specific commit in the repository's history. It can be
 
 
 git help git-receive-pack
+
+# GIT PUSH 
+
+```sh
+git push origin main
+```
+were main can be changed by other branches
