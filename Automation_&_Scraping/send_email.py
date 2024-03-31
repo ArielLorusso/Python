@@ -12,6 +12,7 @@ email_password = 'csXX XXXX XXXX XXef'    # https://mail.google.com/mail/u/0/#in
 email_receiver = 'ariellorusso@gmail.com'
 subject = 'Automatic test code'
 body = """ 
+
 I've just send myself a mail automatically
 """
 script_dir      = os.path.dirname(os.path.abspath(__file__))

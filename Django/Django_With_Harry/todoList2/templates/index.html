@@ -31,27 +31,30 @@
               <a class="nav-link" href="/tasks">Tasks</a>
             </li>
           </ul>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
         </div>
       </div>
     </nav>
 
     
     <!-- SUCCESS ALERT -->
-
+    {% if success %}
     <div class="alert alert-success" role="alert">
-      Task has been uploaded succesfully !
+      <strong>Hello</strong> form submitted: {{success}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+        <span aria-hidden="true">A &times;</span>
+      </button>
     </div>
-    <div class="p-6">
-    </div>
+    {% endif %}
     success is : {{ success }}
+
+    <!--            VISIBLE COMMENT       FRONTEND -->
+    {% comment %} INVISIBLE COMMENT       BACKEND   {% endcomment %}
+
     <!-- FORM -->
     <div class='container my-6'>
       
-      <h2 class="text-center">Wellcome to ToDo list - Add a task</h2>
+      <h2 class="text-center">HELLO {{name}} Wellcome to ToDo list - Add a task</h2>
+      <h2 class="text-center"> {{name}} has lenght : {{name|length}} </h2>
 
       <form action="/" method="post" >
          {% csrf_token %} 
@@ -60,15 +63,23 @@
           <input type="text" class="form-control"  name ='title' id="title"
             aria-describedby="emailHelp">
         </div>
-
+        
         <div class="form-group">
           <label for="desc" class="form-label">Task description</label>
-          <textarea type="text" class="form-control" name="desc" id="desc" cols="30" rows="10"></textarea>
+          <textarea type="text" class="form-control" name="desc" id="desc" cols="3" rows="17"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-
+        <button type="submit" class="btn btn-primary m-3">Submit</button>
+      
       </form>
     </div>
+
+    <div class="m-3"> . </div>
+
+    <footer >
+      <p class='text-center bg-dark text-light fixed-bottom my-0 py-3 '>
+        Copiright &copy; 2022 | All rights reversed....   : P
+      </p>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
