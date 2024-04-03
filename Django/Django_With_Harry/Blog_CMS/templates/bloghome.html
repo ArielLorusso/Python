@@ -4,4 +4,27 @@
     
     <h1> THIS IS /BLOGHOME </h1>
 
+{% for blog in blogs %}
+<div class='container ml-5'>
+    
+    <button type="button" class="btn btn-primary">Primary</button>
+    <h2 style='color: #00F; display:inline;'>
+        {{ blog.title}} 
+    </h2>
+    <div class="d-flex">
+        <div class="flex-shrink-0">
+            <img src="..." alt="...">
+        </div>
+        <div class="flex-grow-1 ms-3">
+            {{ blog.content | slice:300 }}
+        </div>
+    </div>
+</div>
+
+
+<p>
+</p> 
+
+{% endfor %}
+
 {% endblock body %}
