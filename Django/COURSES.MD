@@ -298,7 +298,7 @@ https://www.youtube.com/watch?v=jBzwzrDvZ18
      7.  0:26:37     Numbers In Python
      8.  0:37:19     Getting A User's Input
      9.  0:42:34     Word Replacement Exercise
-2) 2 PYTHON STRUCTURES & LOGIC
+2) PYTHON STRUCTURES & LOGIC
     10.  0:47:08     List In Python
     11.  1:03:05     List Methods
     12.  1:16:28     Tuples In Python
@@ -315,7 +315,7 @@ https://www.youtube.com/watch?v=jBzwzrDvZ18
     23.  2:45:35     Try Except In Python
     24.  2:53:28     Reading Files
     25.  3:03:36     Writing Files
-3) 3 PYTHON OOP
+3) PYTHON OOP
     26.  3:09:17     Classes and Objects In Python
     27.  3:16:43     Inheritance In Python
     28.  3:19:31     The Python Shell
@@ -419,16 +419,17 @@ https://www.youtube.com/watch?v=04L0BbAcCpQ
 # Clever Programmer         Django in 2020           8:28:12   
 https://www.youtube.com/watch?v=JT80XhYJdBw
 https://github.com/CleverProgrammer/codedaddies_list
-* 1     3:52 - Creating Local Environment & Documentation
-* 2    31:48 - Admin Interface
-* 3  1:15:03 - Views In Django
-* 4  1:54:56 - Generic Views in Django
-* 5  2:37:36 - Automated Testing
-* 6  3:31:28 - Static Files
-    PROJECTS :
-* 7  3:48:27 - Craigslist WebScraping Full-Stack App
-* 8  6:45:52 - To-Do List App
-* 9  7:39:01 - Python Freelancer Ultimate Guide
+1)      DJANGO OVERVIEW : 
+    * 1     3:52 - Creating Local Environment & Documentation
+    * 2    31:48 - Admin Interface
+    * 3  1:15:03 - Views In Django
+    * 4  1:54:56 - Generic Views in Django
+    * 5  2:37:36 - Automated Testing
+    * 6  3:31:28 - Static Files
+2)      2 PROJECTS : WebScraping + Todo List 
+    * 7  3:48:27 - Craigslist WebScraping Full-Stack App
+    * 8  6:45:52 - To-Do List App
+    * 9  7:39:01 - Python Freelancer Ultimate Guide
 
 
 # Traversy Media            Django in 7 Hours        7:10:04    
@@ -543,10 +544,8 @@ https://www.youtube.com/watch?v=PtQiiknWUcI
 
 
 # Very Academy      Django Celery Mastery           5:15:37
-
 handling time-consuming and resource-intensive tasks is crucial for building high-performance applications. 
 Django Celery, a powerful asynchronous task-processing library, provides the perfect solution 
-
 1) Python Django Celery Introduction
    *  1      2:44   Celery Task Producers
    *  2     34:11   Building a Django Docker Container
@@ -569,7 +568,7 @@ Django Celery, a powerful asynchronous task-processing library, provides the per
    * 19      5:44   Task Rate limit10s
    * 20      4:57   Common Types of Exceptions and Errors in Celery Tasks
    * 21     16:30   Dynamic Task Discovery: Auto-discovering Tasks in a Directory
-* 
+ 
 
 # Very Academy        Django 5 ORM Essentials 2024   5:34:01
 Module Introduction 
