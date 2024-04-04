@@ -10,7 +10,8 @@
 7) Python Django Tutorial 2020 - Clever Programmer                            8:28:12   https://www.youtube.com/watch?v=JT80XhYJdBw
 8) Python Django 7 Hour Course - Traversy Media                               7:10:04   https://www.youtube.com/watch?v=PtQiiknWUcI
 9) Starte With Django // Build a CRM  - Matt Freire                           9:01:55   https://www.youtube.com/watch?v=fOukA4Qh9QA
-10) Django 5 ORM Model Essentials 2024                                        5:34:01   https://www.youtube.com/playlist?list=PLOLrQ9Pn6cazL1rwTY2d66M9VppexGL-_
+10) Django Celery Mastery Course  - Very Academy                              5:15:37   https://youtube.com/playlist?list=PLOLrQ9Pn6cayGytG1fgUPEsUp3Onol8V7&si=M9rPhko92b6sfrgL
+11) Django 5 ORM Model Essentials 2024                                        5:34:01   https://www.youtube.com/playlist?list=PLOLrQ9Pn6cazL1rwTY2d66M9VppexGL-_
 
 # USING OFICIAL DOCUMENTATION
 https://www.djangoproject.com/start/overview/   - WHY DJ ? Fast , Resourcefull , Secure , Scalable
@@ -281,69 +282,157 @@ https://www.youtube.com/watch?v=o0XbHvKxw7
     89.  10:21    Calculate Meal Queue Ingredient Totals
     90.  14:51    Calculation Function & Custom Signals
    
-# Coding Entrepreneurs       Django Framework        3:45:40    odewithtomi              Python Backend          10:11:51   
+# Coding Entrepreneurs       Django Framework        3:45:40    
+
+# odewithtomi                Python Backend          10:11:51
+  3Hs Python + 4Hs Django + 3Hs Projects 
+  One of the 3 Projects Uses a 3rd party  Weather API
 https://www.youtube.com/watch?v=jBzwzrDvZ18
+1) PYTHON I-O
+     1.  0:00:00     Intro     
+     2.  0:01:58     Introduction To Python
+     3.  0:02:39     Installation Of Python                       
+     4.  0:06:30     Hello World In Python
+     5.  0:11:36     Variables In Python
+     6.  0:17:10     Strings In Python
+     7.  0:26:37     Numbers In Python
+     8.  0:37:19     Getting A User's Input
+     9.  0:42:34     Word Replacement Exercise
+2) 2 PYTHON STRUCTURES & LOGIC
+    10.  0:47:08     List In Python
+    11.  1:03:05     List Methods
+    12.  1:16:28     Tuples In Python
+    13.  1:22:33     Functions In Python
+    14.  1:35:06     The Return Keyword                     
+    15.  1:40:45     IF Statements In Python
+    16.  2:03:21     Building An Even Number Checker Program
+    17.  2:05:05     Dictionaries In Python
+    18.  2:13:40     While Loops In Python
+    19.  2:19:47     For Loops In Python
+    20.  2:29:37     2D Lists
+    21.  2:34:12     Comments In Python
+    22.  2:37:38     Building A Basic Calculator
+    23.  2:45:35     Try Except In Python
+    24.  2:53:28     Reading Files
+    25.  3:03:36     Writing Files
+3) 3 PYTHON OOP
+    26.  3:09:17     Classes and Objects In Python
+    27.  3:16:43     Inheritance In Python
+    28.  3:19:31     The Python Shell
+    29.  3:25:17     Building A Simple Login and SignUp System
+    30.  3:31:04     Modules and PIP In Python
+4) DJANGO INTRO
+    31.  3:38:28     Introduction To Django
+    32.  3:39:32     Installation Of Django
+    33.  3:59:49     Url Routing And Django Apps
+5) DJANGO TEMPLATE
+    34.  4:14:21     Django Template Language
+    35.  4:20:55     Sending Data To Template File
+    36.  4:28:12     Building A Word Counter In Django
+6) HTTP METHODS
+    37.  4:43:13     Get vs Post In Django
+    38.  4:49:21     Static Files In Django
+7) DJANGO MODELS
+    39.  5:04:29     Introduction To Django Models
+    40.  5:29:02     Django Admin Panel & Manipulation Of Database
+    41.  5:46:38     User Registration In Django
+    42.  6:08:46     User Login And Logout In Django
+8) DJANGO ROUTING
+    43.  6:26:43     Dynamic Url Routing In Django
+    44.  6:37:24     Postgresql Setup
+9)  1 DJANGO BLOG
+    45.  6:47:23     Building A Blog With Django - Part 1
+    46.  7:12:10     Building A Blog With Django - Part 2
+10) 2 DJANGO Weather APP
+    47.  7:25:48     Building A Weather App With Django - Part 1
+    48.  7:45:17     Building A Weather App With Django - Part 2
+11) 3 DJANGO CHAT
+    49.  8:03:06     Building A Realtime Chat Application With Django - Part 1
+    40.  8:50:11     Building A Realtime Chat Application With Django - Part 2
+    41.  9:07:59     Django Rest Framework Crash Course
 
-# PyPlane                   Django 3 Sales Report          7:00:05   
+# PyPlane                   Django 3 Sales Report    7:00:05   
 https://www.youtube.com/watch?v=04L0BbAcCpQ
- (0:00:00​) intro
- (0:03:35​) django project setup part 1
- (0:09:56​) django project setup part 2
- (0:15:11​) django project setup part 3
- (0:25:21​) customer model
- (0:30:49​) product model
- (0:36:30​) profile model + post_save signal
- (0:48:14​) sale model
- (1:12:05​) m2m_changed signal
- (1:19:15​) reports model
- (1:24:14​) first view and template
- (1:33:25​) working on the sales list
- (1:39:58​) navigating to the detail page
- (1:49:27​) creating the search form
- (1:58:15​) get the data from the search form
- (2:01:08​) first querysets and dataframes
- (2:17:05​) display dataframes in the templates
- (2:24:04​) dataframe for the positions
- (2:32:47​) get the sales id for position objects
- (2:38:00​) the apply function
- (2:49:01​) merge dataframes
- (2:54:57​) perform groupby
- (2:58:12​) working on the charts part 1
- (3:02:58​) working on the charts part 2
- (3:17:18​) hello world from the console
- (3:21:29​) adding the modal 
- (3:29:04​) add the report form to the modal 
- (3:35:45​) add the 'results by' field
- (3:50:02​) no data available alert 
- (3:53:51​) add the chart to the modal
- (3:58:48​) create report objects
- (4:28:46​) adding alerts to the modal
- (4:33:27​) report list and detail page
- (4:41:35​) working on the report list 
- (4:47:43​) working on the report detail
- (4:51:33​) first pdf
- (4:58:13​) the report pdf
- (5:04:19​) add dropzone + favicon
- (5:07:30​) working on the dropzone js part 1
- (5:17:01​) working on the dropzone js part 2
- (5:23:52​) uploading csvs
- (5:35:45​) first objects from file
- (5:49:27​) improving the dropzone
- (5:56:15​) dropzone js final touches
- (6:04:03​) adding my profile
- (6:09:42​) working on my profile
- (6:17:06​) authentication
- (6:31:14​) protecting the views
- (6:36:17​) adding the navbar
- (6:49:03​) the forgotten sale detail page
- (6:57:06​) outro + next steps 
-
+1)  SETUP
+     1. 0:00:00​   intro
+     2. 0:03:35​   django project setup part 1
+     3. 0:09:56​   django project setup part 2
+     4. 0:15:11​   django project setup part 3
+2)  MODEL
+     5. 0:25:21​   customer model
+     6. 0:30:49​   product model
+     7. 0:36:30​   profile model + post_save signal
+     8. 0:48:14​   sale model
+     9. 1:12:05​   m2m_changed signal
+    10. 1:19:15​   reports model
+3)  VIEW & TEMPLATES
+    11.  1:24:14​   first view and template
+    12.  1:33:25​   working on the sales list
+    13.  1:39:58​   navigating to the detail page
+    14.  1:49:27​   creating the search form
+    15.  1:58:15​   get the data from the search form
+4)  QUERIES
+    16.   2:01:08​   first querysets and dataframes
+    17.   2:17:05​   display dataframes in the templates
+5)  PANDAS DATAFRAMES
+   18.  2:24:04​   dataframe for the positions
+   19.  2:32:47​   get the sales id for position objects
+   20.  2:38:00​   the apply function
+   21.  2:49:01​   merge dataframes
+   22.  2:54:57​   perform groupby
+6)  CHAT
+   23. 2:58:12​   working on the charts part 1
+   24. 3:02:58​   working on the charts part 2
+   25. 3:17:18​   hello world from the console
+   26. 3:21:29​   adding the modal 
+7)  REPORT
+   27. 3:29:04​   add the report form to the modal 
+   29. 3:35:45​   add the 'results by' field
+   30. 3:50:02​   no data available alert 
+   31. 3:53:51​   add the chart to the modal
+   32. 3:58:48​   create report objects
+   33. 4:28:46​   adding alerts to the modal
+   34. 4:33:27​   report list and detail page
+   35. 4:41:35​   working on the report list 
+   36. 4:47:43​   working on the report detail
+8)  PDF & JS AJAX 
+    37. 4:51:33​   first pdf
+    38. 4:58:13​   the report pdf
+    39. 5:04:19​   add dropzone + favicon
+9)  JavaScript
+    40. 5:07:30​   working on the dropzone js part 1
+    41. 5:17:01​   working on the dropzone js part 2
+10) CSV
+    42. 5:23:52​   uploading csvs
+    43. 5:35:45​   first objects from file
+    44. 5:49:27​   improving the dropzone
+    45. 5:56:15​   dropzone js final touches
+    46. 6:04:03​   adding my profile
+    47. 6:09:42​   working on my profile
+11) AUTENTICATION & SECURITY
+    48. 6:17:06​   authentication
+    49. 6:31:14​   protecting the views
+    50. 6:36:17​   adding the navbar
+    51. 6:49:03​   the forgotten sale detail page
+    52. 6:57:06​   outro + next steps
 
 # Clever Programmer         Django in 2020           8:28:12   
 https://www.youtube.com/watch?v=JT80XhYJdBw
+https://github.com/CleverProgrammer/codedaddies_list
+* 1     3:52 - Creating Local Environment & Documentation
+* 2    31:48 - Admin Interface
+* 3  1:15:03 - Views In Django
+* 4  1:54:56 - Generic Views in Django
+* 5  2:37:36 - Automated Testing
+* 6  3:31:28 - Static Files
+    PROJECTS :
+* 7  3:48:27 - Craigslist WebScraping Full-Stack App
+* 8  6:45:52 - To-Do List App
+* 9  7:39:01 - Python Freelancer Ultimate Guide
 
-# Traversy Media            Django in 7 Hours        7:10:04    Discord-like chat room
 
+# Traversy Media            Django in 7 Hours        7:10:04    
+Discord-like chat room With users pics & topic search
  https://www.youtube.com/watch?v=PtQiiknWUcI
 1) PROJECT
    *      0:00 - Intro
@@ -378,7 +467,7 @@ https://www.youtube.com/watch?v=JT80XhYJdBw
    *   6:37:35 - Integrating Custom User Model
   
 
-# Matt Freire         CRM Customer relation manag
+# Matt Freire         CRM Customer relation manag    9:01:55
 You'll learn fundamentals of Django and build a basic CRM system. 
  & how to deploy the project using Digital Ocean
 https://www.youtube.com/watch?v=PtQiiknWUcI
@@ -393,7 +482,7 @@ https://www.youtube.com/watch?v=PtQiiknWUcI
    *      33:14 - Server and Migrations
    *      38:04 - Project Structure
    *      45:53 - Leads App
-2)  MODELS
+2) MODELS
     *     49:35 - Django MODELS
     *   1:00:41 - Django Model Fields
     *   1:05:25 - ForeignKeys
@@ -453,8 +542,36 @@ https://www.youtube.com/watch?v=PtQiiknWUcI
 
 
 
-# Very Academy        Django 5 ORM Essentials 2024   5:34:01
+# Very Academy      Django Celery Mastery           5:15:37
 
+handling time-consuming and resource-intensive tasks is crucial for building high-performance applications. 
+Django Celery, a powerful asynchronous task-processing library, provides the perfect solution 
+
+1) Python Django Celery Introduction
+   *  1      2:44   Celery Task Producers
+   *  2     34:11   Building a Django Docker Container
+   *  3      1:50   Celery Message Brokers Introduction
+   *  4      3:52   Building a Redis Docker Container
+   *  5      3:18   Celery Task Consumers Introduction
+   *  6      8:05   Building a Celery Worker Docker Container
+   *  7     13:14   Creating and Registering Celery Tasks in Django
+   *  8      4:25   Starting the Celery Worker
+   *  9     11:06   Initiating a Celery Task
+   * 10   1:21:24   Django Channels Push Notifications [Part-1]
+   * 11     53:40   Django Channels + Celery Worker Push Notifications [part-2]
+   * 12     17:52   Creating a New Standalone Celery Worker
+   * 13      6:16   Introducing Tasks Routing
+   * 14     11:50   Configuring Task Routing
+   * 15      3:17   Celery Task Prioritization Intro
+   * 16     11:12   Configuring Task Prioritization (Redis)
+   * 17      4:53   Task Grouping Intro
+   * 18      4:40   Task Chaining Intro
+   * 19      5:44   Task Rate limit10s
+   * 20      4:57   Common Types of Exceptions and Errors in Celery Tasks
+   * 21     16:30   Dynamic Task Discovery: Auto-discovering Tasks in a Directory
+* 
+
+# Very Academy        Django 5 ORM Essentials 2024   5:34:01
 Module Introduction 
 1) ORM IN A PROJECT
     *    2   2:18    The Database ERD 
