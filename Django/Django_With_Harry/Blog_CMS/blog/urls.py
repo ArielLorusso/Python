@@ -19,9 +19,9 @@ from django.urls import path, include
 from blog import views
 
 urlpatterns = [
-    path(''         , views.home, name='home'),
-    path('blog/'    , views.blog, name='home'),
-    path('blogpost/<str:slug>', views.blogpost, name='home'),
-    path('contact/' , views.contact, name='home'),
-    path('search/' , views.search, name='home')
+    path(''         , views.home, name=''),
+    path('blog/'    , views.blog, name=''),
+    path('blogpost/<str:slug>', views.blogpost, name=''),
+    path('contact/' , views.contact, name=''),
+    path('search/'  , views.search, name='')
 ]

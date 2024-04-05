@@ -5,13 +5,15 @@ def home(request):
     return render(request, 'index.html')
 
 def blog(request):
-    blogs = Blog.objects.all()
-    context = {'blogs': blogs }
-    return render(request, 'bloghome.html', context)
+    blogs = Blog.objects.all()   # Blogs are objects retreved by ORM
+    context = {'blogs': blogs }  # context must be a dictionary  key-value
+    return render(request, 'bloghome.html', context) 
 
 def blogpost(request,slug):
-    return render(request, 'blogpost.html')
-    return HttpResponse(f"this is blogpost/{slug}")
+    blog = Blog.objects.filter(slug=slug).first()
+    context = {'blog': blog }
+    return render(request, 'blogpost.html',context)
+
 
 def contact(request):
     return render(request, 'contact.html')

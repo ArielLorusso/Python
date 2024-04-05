@@ -102,9 +102,12 @@ django does not have this by default
 # Third party autentication
 Google Facebook Outlook
 
+# URLS
 
-hostdomain.extension/App/funct/slug?field1=value1&field2=value2#Headline2
+host-domain.extension/App/funct/slug?field1=value1&field2=value2#Headline2
 
+host-domain = IP + PORT
+endpoint =
 slug = variable --> django : <type:name>
 ? : querry separator
 & : key-value separator
