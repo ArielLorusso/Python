@@ -4,14 +4,15 @@
 1) Django Tutorials For Beginners / @ProgrammingWithHarry                    10:19:55   www.youtube.com/watch?v=dS3loltS_mY&list=PLK8cqdr55Tsv-D2HMdrnD32oOVBNvmxjr
 2) Django For Everybody - freeCodeCamp.org - / @ChuckSeverance               18:32:45   https://www.youtube.com/watch?v=o0XbHvKxw7Y
 3) Try Django 3.2 - Python Web Development - CodingEntrepreneurs             18:51:10   https://www.youtube.com/playlist?list=PLEsfXFp6DpzRMby_cSoWTFw8zaMdTEXgL
-4) Python Django Web Framework  - freeCodeCamp.org  / @codingentrepreneurs    3:45:40   https://www.youtube.com/watch?v=F5mRW0jo-U4
-5) Python Backend Web Development  - freeCodeCamp.org  /@codewithtomi        10:11:51   https://www.youtube.com/watch?v=jBzwzrDvZ18
-6) Django 3 Course - Python Web Framework - freeCodeCamp.org  / @pyplane      7:00:05   https://www.youtube.com/watch?v=04L0BbAcCpQ
-7) Python Django Tutorial 2020 - Clever Programmer                            8:28:12   https://www.youtube.com/watch?v=JT80XhYJdBw
-8) Python Django 7 Hour Course - Traversy Media                               7:10:04   https://www.youtube.com/watch?v=PtQiiknWUcI
-9) Starte With Django // Build a CRM  - Matt Freire                           9:01:55   https://www.youtube.com/watch?v=fOukA4Qh9QA
-10) Django Celery Mastery Course  - Very Academy                              5:15:37   https://youtube.com/playlist?list=PLOLrQ9Pn6cayGytG1fgUPEsUp3Onol8V7&si=M9rPhko92b6sfrgL
-11) Django 5 ORM Model Essentials 2024                                        5:34:01   https://www.youtube.com/playlist?list=PLOLrQ9Pn6cazL1rwTY2d66M9VppexGL-_
+4) Python Django Tutorials for Beginners   -  Dave Gray                       3:19:49   https://www.youtube.com/playlist?list=PL0Zuz27SZ-6NamGNr7dEqzNFEcZ_FAUVX
+5) Python Django Web Framework  - freeCodeCamp.org  / @codingentrepreneurs    3:45:40   https://www.youtube.com/watch?v=F5mRW0jo-U4
+6) Python Backend Web Development  - freeCodeCamp.org  /@codewithtomi        10:11:51   https://www.youtube.com/watch?v=jBzwzrDvZ18
+7) Django 3 Course - Python Web Framework - freeCodeCamp.org  / @pyplane      7:00:05   https://www.youtube.com/watch?v=04L0BbAcCpQ
+8) Python Django Tutorial 2020 - Clever Programmer                            8:28:12   https://www.youtube.com/watch?v=JT80XhYJdBw
+9) Python Django 7 Hour Course - Traversy Media                               7:10:04   https://www.youtube.com/watch?v=PtQiiknWUcI
+10) Starte With Django // Build a CRM  - Matt Freire                          9:01:55   https://www.youtube.com/watch?v=fOukA4Qh9QA
+11) Django Celery Mastery Course  - Very Academy                              5:15:37   https://youtube.com/playlist?list=PLOLrQ9Pn6cayGytG1fgUPEsUp3Onol8V7&si=M9rPhko92b6sfrgL
+12) Django 5 ORM Model Essentials 2024                                        5:34:01   https://www.youtube.com/playlist?list=PLOLrQ9Pn6cazL1rwTY2d66M9VppexGL-_
 
 # USING OFICIAL DOCUMENTATION
 https://www.djangoproject.com/start/overview/   - WHY DJ ? Fast , Resourcefull , Secure , Scalable
@@ -174,7 +175,24 @@ https://www.youtube.com/watch?v=o0XbHvKxw7
     93.  30:21   Walking through the DJ4E Favorites (favs) Sample Code
     94.  21:31   Walking through the DJ4E Search (well) Sample Code
     95.  28:30   Behind the Scenes: Welcome to Django for Everybody - Why Django?
-   
+
+# Dave Gray      Python Django Full Course          3:19:49
+https://www.youtube.com/playlist?list=PL0Zuz27SZ-6NamGNr7dEqzNFEcZ_FAUVX
+https://github.com/gitdagray
+* 0:00:00 Intro
+* 0:00:40 Chapter 1: Start Here
+* 0:27:53 Chapter 2: Apps & Templates
+* 0:50:17 Chapter 3: Models & Migrations
+* 0:57:35 Chapter 4: Django ORM
+* 1:04:00 Chapter 5: Django Admin
+* 1:19:08 Chapter 6: Pages, URLs & Slugs
+* 1:39:16 Chapter 7: Upload Images
+* 1:50:43 Chapter 8: Challenge
+* 2:00:00 Chapter 9: User Registration
+* 2:16:00 Chapter 10: User Login & Auth 
+* 2:31:21 Chapter 11: Authorization
+* 2:53:21 Chapter 12: Custom Forms
+  
 # Coding Entrepreneurs      Try Django 3.2          18:51:10   
     https://www.youtube.com/playlist?list=PLEsfXFp6DpzRMby_cSoWTFw8zaMdTEXgL
 1)  DEMO & SETUP
@@ -282,6 +300,8 @@ https://www.youtube.com/watch?v=o0XbHvKxw7
     89.  10:21    Calculate Meal Queue Ingredient Totals
     90.  14:51    Calculation Function & Custom Signals
    
+
+
 # Coding Entrepreneurs       Django Framework        3:45:40    
 
 # odewithtomi                Python Backend          10:11:51
