@@ -1,19 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "layout.html" %}
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Home</title>
-        {% load static %}
-        <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
-        <!--    <link rel="stylesheet" href="/static/css/style.css">    -->  
-        <script src="{% static "js/main.js" %}" defer> </script>
-        <!-- defer : load JS after the whole html is loaded -->
-    </head>
-    
-    <body>
-        <h1>Home</h1>
+{% clock title%}
+    Home
+{% endblock %}
+
+{% clock content%}
+    <h1>Home</h1>
     <p> checkout my   <a href="/about">About</a>     page  </p>
-</body>
-</html>
+{% endblock %}

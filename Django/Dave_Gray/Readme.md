@@ -1,6 +1,6 @@
 https://www.youtube.com/playlist?list=PL0Zuz27SZ-6NamGNr7dEqzNFEcZ_FAUVX
 
-#  VIDEO 1/12       Introduction and Beginners
+#  VIDEO 1/12               Introduction and Beginners
 
 ##  UPDATE TO DJANGO 5
 
@@ -52,7 +52,7 @@ def about(request):
     return HttpResponse("this is /about")
 ```
 ##  TEMPLATES                15:00
-###     Dave_Gray/ myProject/ settings.py : 
+###     Dave_Gray/ myProject/ myProject/ settings.py : : 
 ```json
 TEMPLATES = [
     {   "DIRS": ['templates'],          }   ]
@@ -104,7 +104,7 @@ h1, p {
     text-align: center;
 }
 ```
-###     Dave_Gray/ myProject/ settings.py :
+###     Dave_Gray/ myProject/ myProject/ settings.py : :
 ```py
 import os
 STATIC_URL = "static/"
@@ -112,7 +112,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'static')
 ]
 ```
-###     Dave_Gray/ template/  settings.py :
+###     Dave_Gray/ template/  home.html :
 ```html
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -138,14 +138,74 @@ console.log("this is JS  from  About page")
 <!-- defer : load JS after the whole html is loaded -->
 ```
 
-#  VIDEO 2/12       App & Templates
+#  VIDEO 2/12               App & Templates
 
 ## VS-Code Extension
 Django              v1.15.0     Baptiste Darthenay
 Material Icon Theme v4.34.0     Philipp Kief
-## APP : posts
+## APP : posts              2:45
 ```sh
 python3 manage.py startapp posts
 ```
 ### Dave_Gray/ myProject/ posts/ views.py :
+```py
+def posts_list (request):
+    return render(request, '')
+``` 
+      
+### Dave_Gray/ myProject/ myProject/ settings.py :
+```py
+# Application definition
+INSTALLED_APPS = [
+    'posts',
+    ]
+```
+## CREATE A NAMESPACE       5:30
+We follow the pattern :     APP/ templates/ APP/ 
+### Dave_Gray/ myProject/ posts/ templates/ posts/ posts_list.html :
+```html
+        <title>Post List</title>
+            <h1>Post List</h1>
+```
+### Fix Emmet in VS-code settings :
+```json
+    "emmet.includeLanguages": { "django-html": "html" }
+```
+### Dave_Gray/ myProject/ posts/ urls.py :
+```py
+urlpatterns = [
+    path(''      , views.posts_list),   ]
+```
+### Dave_Gray/ myProject/ posts/ views.py :
+```py
+def posts_list (request):
+    return render(request, 'posts/posts_list.html')
+```
+### Dave_Gray/ myProject/ myProject/ urls.py :
+```py
+    from django.urls import path, include
+    path('posts/', include('posts.urls' )),
+```
+## OPEN IN BROWSER          
+```sh
+python3 manage.py runserver
+>Starting development server at http://127.0.0.1:8000/
+```
+BROWSER -->  http://127.0.0.1:8000/posts/
+## ADVANCED TEPMLATE        13:00
+###
+###
+```html
+{% extends "layout.html" %}
 
+{% clock title%}
+    Home
+{% endblock %}
+
+{% clock content%}
+    <h1>Home</h1>
+    <p> checkout my   <a href="/about">About</a>     page  </p>
+{% endblock %}
+
+```
+###
