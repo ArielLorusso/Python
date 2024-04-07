@@ -1,5 +1,5 @@
 https://www.youtube.com/playlist?list=PL0Zuz27SZ-6NamGNr7dEqzNFEcZ_FAUVX
-
+https://github.com/gitdagray/django-course/
 #  VIDEO 1/12               Introduction and Beginners
 
 ##  UPDATE TO DJANGO 5
@@ -193,8 +193,34 @@ python3 manage.py runserver
 ```
 BROWSER -->  http://127.0.0.1:8000/posts/
 ## ADVANCED TEPMLATE        13:00
-###
-###
+### Dave_Gray/ myProject/ templates/ layout.html :
+```html
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <title>
+        {% block title%}
+        Django app  <!--Default value -->
+        {% ensblock %}
+    </title>
+    <link  href="{% static 'css/style.css' %}" rel="stylesheet"> 
+    <script src="{% static "js/main.js" %}" defer> </script>
+</head>
+<body>
+    <nav>
+        <a href="/"     > 🏠 </a>
+        <a href="/about"> ℹ️  </a>
+        <a href="/news" > 🗞️ </a>
+    </nav>
+    <main>
+        {% block content%}
+        {% endblock %}
+    </main>
+</body>
+</html>
+```
+### Dave_Gray/ myProject/ templates/ home.html :
 ```html
 {% extends "layout.html" %}
 
@@ -208,4 +234,7 @@ BROWSER -->  http://127.0.0.1:8000/posts/
 {% endblock %}
 
 ```
-###
+
+## POST TEMPLATE            20:00
+
+# VIDEO 3/12                Models and Migrations

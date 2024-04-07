@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Post List</title>
-        {% comment %} {% load static %}
-        <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
-        <script src="{% static "js/main.js" %}" defer> </script> {% endcomment %}
+{% extends "layout.html" %}
 
-</head>
+{% block title%}
+    Post List
+{% endblock %}
 
-<body>
-    <h1>Post List</h1>
-    {% comment %} <p> checkout my     <a href="/">home</a>    page </p> {% endcomment %}
-</body>
-</html>
+{% block content%}
+    <h1> Post List</h1>
+    <p> checkout my   <a href="/">Home</a>     page  </p>
+{% endblock %}

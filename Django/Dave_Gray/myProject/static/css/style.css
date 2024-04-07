@@ -13,6 +13,43 @@ body {
     color: #FFF;
 }
 
+main {
+    flex-grow: 1;
+    display: grid;
+    place-content: center;
+}
+
+nav {
+    position: absolute;
+    display:inline;
+    padding: 20pt;
+    width:100vw;
+    background-color: #296;
+}
+nav > div {
+    display: inline;
+    padding: 10pt;
+    margin: 20pt;
+    border: #222;
+    border-style: solid;
+    border-radius: 5pt;
+}
+nav > div:hover {
+    background-color: #074;
+}
+main > a {
+    color: #80F;
+}
+main > a:visited {
+    color: #8FF;
+}
+nav > div > a {
+    font-weight: bolder;
+    color: #000;
+}
+
+
+
 h1, p {
     text-align: center;
 }

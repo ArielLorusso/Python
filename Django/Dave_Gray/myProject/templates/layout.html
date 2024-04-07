@@ -7,16 +7,24 @@
     <title>
         {% block title%}
         Django app  <!--Default value -->
-        {% ensblock %}
+        {% endblock %}
     </title>
     <link  href="{% static 'css/style.css' %}" rel="stylesheet"> 
     <script src="{% static "js/main.js" %}" defer> </script>
 </head>
 <body>
     <nav>
-        <a href="/"     > 🏠 </a>
-        <a href="/about"> ℹ️  </a>
-        <a href="/news" > 🗞️ </a>
+        <div>
+            <a href="/"     > 🏠 Home </a>  
+        </div>
+        |
+        <div>
+            <a href="/about"> 🌐  About</a> 
+        </div>
+        |
+        <div>
+            <a href="/posts" > 🗞️ News </a>
+        </div>
     </nav>
     <main>
         {% block content%}
@@ -26,9 +34,9 @@
 </html>
 
 {% comment %}  USEFULL EMOJIS  https://emojipedia.org/shopping-cart
-🏠🏢🏦🌏🕐🌐🌗🔗🛡️📅📋📧📩📎🔑🔓🔒👍👎📰🗞️📜📄
+🏠🏢🏦🌏🕐🌐🌗🔗🛡️📅📋📧📩📎🔑🔓🔒👍👎📰🗞️📜📄📑📝🪧🗣️💡
 ℹ️©️®️💬🛒💲💰💵💳📊📈📉🎓👁️‍🗨️🔍🔎✂️⚙️✈️🚓🚛🛵📦🗑️🔥🚨🛟
 🚫⛔☢️⚠️✅❎♀️♂️📌💾📷📸🎬🎞️📀🔧🏷️
-🎵🎧📀🔈🔉🔊🔇💎👑📣🔔🔕✏️📞📓📕📗📘📙
+🎵🎧📀🔈🔉🔊🔇💎👑📣🔔🔕✏️📞📖📓📕📗📘📙📒
 ♻️🆕⏯️⏸️▶️⏹️⏺️⏏️🔴🟠🟡🟢🔵🟣🟤⚫🪪🌗❤️
 {% endcomment %}
