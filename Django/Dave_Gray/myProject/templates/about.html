@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>About</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+        <!--    <link rel="stylesheet" href="/static/css/style.css">    -->  
+        <script src="{% static "js/main.js" %}" defer> </script>
+        <!-- defer : load JS after the whole html is loaded -->
 </head>
+
 <body>
     <h1>About</h1>
-    <p> checkout my 
-        <a href="/">home</a>
-        page
-    </p>
+    <p> checkout my     <a href="/">home</a>    page </p>
 </body>
 </html>
