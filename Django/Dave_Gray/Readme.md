@@ -410,3 +410,93 @@ def posts_list (request):
 
 # VIDEO 6/12                Pages, URLs & Slugs
 
+## {% URL %}  URL REVERSING 
+### Dave_Gray/ myProject/ posts/ urls.py :
+```py
+    path( '' , views.posts_list, name='posts'),
+```
+We ADDED   name='posts' to name this URL endpoint :
+http://127.0.0.1:8000/posts/  ->  name='posts'
+### Dave_Gray/ myProject/ templates/ layout.html :
+```py
+<div>
+    <a href="{% url 'posts' %}" > 🗞️ News </a>
+</div>
+```
+## PATH CONVERTERS          5:00
+https://docs.djangoproject.com/en/5.0/topics/http/urls/#path-converters
+
+str  - Matches any non-empty string, excluding the path separator, '/'. This is the default if a converter isn’t included in the expression.
+int  - Matches zero or any positive integer. Returns an int.
+slug - Matches any slug string consisting of ASCII letters or numbers, plus the hyphen and underscore characters. For example, building-your-1st-django-site.
+uuid - Matches a formatted UUID. To prevent multiple URLs from mapping to the same page, dashes must be included and letters must be lowercase. For example, 075194d3-6885-417e-a8a8-6c931e272f00. Returns a UUID instance.
+path - Matches any non-empty string, including the path separator, '/'. This allows you to match against a complete URL path rather than a segment of a URL path as with str.
+
+We use slug
+### Dave_Gray/ myProject/ posts/ urls.py :
+```py
+    path  (  '<slug:slug>'      ,  views.post_page, name='page'),
+# < path_converter : parameter >    view.function   name for reversing
+```
+
+
+## PATH REVERSING           10:00
+### Dave_Gray/ myProject/ posts/ templates/ posts/ posts_list.html :
+```py
+<h2>
+    <a href="{% url 'page' slug=post.slug %}">
+        {{ post.title }}
+    </a>
+</h2>
+```
+
+## EMPTY DATA ERROR
+### ERROR during template rendering :
+In template /home/ariel/Desktop/Python/Django/Dave_Gray/myProject/posts/templates/posts/posts_list.html, error at line 12
+Reverse for 'page' with keyword arguments '{'slug': ''}' not found. 1 pattern(s) tried: ['posts/(?P<slug>[-a-zA-Z0-9_]+)\\Z']
+12	    <a href="{% url 'page' slug=post.slug %}">
+
+### CAUSE : if Post element lacks a slug attribute or have it set to None, 
+attempting to generate a URL using {% url 'page' slug=post.slug %} will fail, 
+because Django won't be able to construct a valid URL 
+
+
+
+## RENDER VIEW              14:20
+### Dave_Gray/ myProject/ posts/ views.py :
+```py
+    post = Post.objects.get(slug=slug)
+    context = { "post": post }
+    return render(request, 'posts/post_page.html', context )
+```
+
+We select a sigle post by  .get(slug) method
+but posts/post_page.html  does not exist... lets make it 
+
+###  Dave_Gray/ myProject/ posts/ templates/ posts/ post_page.html
+```py
+{% extends "layout.html" %}
+
+{% block title%}
+    {{ post.title }}
+{% endblock %}
+
+{% block content%}
+    <section>
+        <h1>    {{ post.title }}   </h1>
+        <p> {{ post.body  }} </p>    <br> <hr>
+        <p> {{ post.date  }} </p>
+    </section>
+{% endblock %}
+
+```
+## SPAN for ACCESIBILITY 
+We want it to read the emoji's content :
+### Dave_Gray/ myProject/ templates/ layout.html :
+```py
+<a href="/" > 
+    <span role="img" aria-label="Home"> 🏠 </span>     Home 
+</a>  
+```
+
+# VIDEO 7/12                Upload & Display Images

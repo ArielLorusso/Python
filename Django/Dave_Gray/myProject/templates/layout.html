@@ -15,15 +15,20 @@
 <body>
     <nav>
         <div>
-            <a href="/"     > 🏠 Home </a>  
+            <a href="/" > 
+                <span role="img" aria-label="Home"> 🏠 </span>      Home 
+            </a>  
         </div>
         |
         <div>
-            <a href="/about"> 🌐  About</a> 
+            <a href="/about"> 
+                <span role="img" aria-label="About"> 🌐 </span>     About
+            </a> 
         </div>
-        |
         <div>
-            <a href="/posts" > 🗞️ News </a>
+            <a href="{% url 'posts' %}" >  
+                <span role="img" aria-label="Posts"> 🗞️ </span>     News
+            </a>
         </div>
     </nav>
     <main>
