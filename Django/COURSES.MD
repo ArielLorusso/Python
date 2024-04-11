@@ -13,6 +13,8 @@
 10) Starte With Django // Build a CRM  - Matt Freire                          9:01:55   https://www.youtube.com/watch?v=fOukA4Qh9QA
 11) Django Celery Mastery Course  - Very Academy                              5:15:37   https://youtube.com/playlist?list=PLOLrQ9Pn6cayGytG1fgUPEsUp3Onol8V7&si=M9rPhko92b6sfrgL
 12) Django 5 ORM Model Essentials 2024                                        5:34:01   https://www.youtube.com/playlist?list=PLOLrQ9Pn6cazL1rwTY2d66M9VppexGL-_
+13) Django Web Framework  -  Self Taught Courses                              5:10:26   https://www.youtube.com/watch?v=ElYj7lI3YMQ
+
 
 # USING OFICIAL DOCUMENTATION
 https://www.djangoproject.com/start/overview/   - WHY DJ ? Fast , Resourcefull , Secure , Scalable

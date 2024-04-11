@@ -43,6 +43,9 @@ main > a {
 main > a:visited {
     color: #8FF;
 }
+
+
+
 nav > div > a {
     font-weight: bolder;
     color: #000;
@@ -52,4 +55,10 @@ nav > div > a {
 
 h1, p {
     text-align: center;
+}
+
+.banner {
+    display: inline;
+    width: 20%;
+    max-width: 800px;
 }

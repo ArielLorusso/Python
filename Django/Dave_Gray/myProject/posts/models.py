@@ -8,6 +8,7 @@ class Post(models.Model):
     body  = models.TextField()              # default form widget for this field = Textarea.
     slug  = models.SlugField()              # label contais only letters, numbers, underscores or hyphens. Used in URLs.
     date  = models.DateTimeField(auto_now_add=True)
+    banner = models.ImageField(default='fallback.png', blank=True)
 
     def __str__(self) -> str:
         return self.title

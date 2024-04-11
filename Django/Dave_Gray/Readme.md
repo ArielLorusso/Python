@@ -25,7 +25,6 @@ pip list | grep Django
 > Django                   5.0.4
 ```
 ##  START PROJECT
-
 ```sh
 django-admin startproject myProject
 python3 manage.py runserver
@@ -192,7 +191,7 @@ python3 manage.py runserver
 >Starting development server at http://127.0.0.1:8000/
 ```
 BROWSER -->  http://127.0.0.1:8000/posts/
-## ADVANCED TEPMLATE        13:00
+## DJANGO TEPMLATE        13:00
 ### Dave_Gray/ myProject/ templates/ layout.html :
 ```html
 <!DOCTYPE html>
@@ -224,18 +223,31 @@ BROWSER -->  http://127.0.0.1:8000/posts/
 ```html
 {% extends "layout.html" %}
 
-{% clock title%}
+{% clock title%}        <!-- HEAD tab title -->
     Home
 {% endblock %}
 
-{% clock content%}
+{% clock content%}      <!--  BODY content -->
     <h1>Home</h1>
     <p> checkout my   <a href="/about">About</a>     page  </p>
 {% endblock %}
 
 ```
-
 ## POST TEMPLATE            20:00
+### Dave_Gray/ myProject/ posts/ templates/ posts/ post_page.html
+```html
+{% extends 'layout.html' %}
+
+{% block title %}
+    Posts List
+{% endblock %}
+
+{% block content %}
+    <h1>Posts List</h1>
+{% endblock %}
+```
+do the samt to  myProject/ templates/ about.html
+
 
 # VIDEO 3/12                MODELS and Migrations
 
@@ -250,7 +262,6 @@ class Post(models.Model):
     slug  = models.SlugField()              # label contais only letters, numbers, underscores or hyphens. Used in URLs.
     date  = models.DateTimeField(auto_now_add=True)
 ```
-
 ## Unaplyed Builtin Migrations
 ```sh
 python3 manage.py runserver
@@ -258,7 +269,6 @@ python3 manage.py runserver
 > "until apply migrations for  app(s):" # admin, auth, contenttypes, sessions.
 > "To apply them Run : "                # python manage.py migrate 
 ```
-
 ## MIGRATIE
 
 ```sh
@@ -270,7 +280,6 @@ ariel  $ python3 manage.py migrate
 >   Applying auth.0001_initial... # OK
 >   Applying admin.0001_initial... # OK ...........
 ```
-
 ## MAKEMIGRATIONS           7:30
 
 ```sh
@@ -280,7 +289,6 @@ python3 manage.py makemigrations
 >     - Create model Post
 ```
 This created files : `posts/ migrations/ 0001_initial.py`
-
 ## AUTOMATIC ID as PRIMARY KEY
 ```py
 migrations.CreateModel(
@@ -316,7 +324,6 @@ In [6]: Post.objects.all()
 Out[6]: <QuerySet [     <Post: Post object (1)>     ]>
 In [7]: exit()
 ```
-
 ## ADD METHOD TO MODEL  4:00
 
 Seeing   <Post: Post object (1)>  does not show much information about content
@@ -357,7 +364,6 @@ python3 manage.py createsuperuser
 when we log in in we just se `USERS`   
 http://127.0.0.1:8000/admin/auth/user/
 We do `NOT` se any `Post table`
-
 ## REGISTER the MODEL       6:00
 
 ### Dave_Gray/myProject/posts/admin.py
@@ -386,9 +392,9 @@ we can see the HTTP request generated
 /jsi18n   endpoint for Djangos  Internationalization and localization
 witch adapts the web contents depending on the user location time & language
 https://docs.djangoproject.com/en/5.0/topics/i18n/
-
 ## PASS DATA TO VIEWS :     9:00
 ### Dave_Gray/ myProject/ posts/ views.py:
+## SHOW DATA IN TEPLATE :   11:30
 ```py
 def posts_list (request):
     posts = Post.objects.all().order_by("-date")
@@ -438,8 +444,6 @@ We use slug
     path  (  '<slug:slug>'      ,  views.post_page, name='page'),
 # < path_converter : parameter >    view.function   name for reversing
 ```
-
-
 ## PATH REVERSING           10:00
 ### Dave_Gray/ myProject/ posts/ templates/ posts/ posts_list.html :
 ```py
@@ -459,9 +463,6 @@ Reverse for 'page' with keyword arguments '{'slug': ''}' not found. 1 pattern(s)
 ### CAUSE : if Post element lacks a slug attribute or have it set to None, 
 attempting to generate a URL using {% url 'page' slug=post.slug %} will fail, 
 because Django won't be able to construct a valid URL 
-
-
-
 ## RENDER VIEW              14:20
 ### Dave_Gray/ myProject/ posts/ views.py :
 ```py
@@ -500,3 +501,132 @@ We want it to read the emoji's content :
 ```
 
 # VIDEO 7/12                Upload & Display Images
+
+## MEDIA SETTINGS :
+### Dave_Gray/ myProject/ myProject/ settings.py :
+```py
+MEDIA_URL = 'media/'                            # name for generated folder
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media' )   # absolute path
+```
+## MEDIA STATIC URL :
+### Dave_Gray/ myProject/ myProject/ urls.py :
+```py
+from django.conf.urls.static import static
+from django.conf import settings
+
+urlpatterns += static(settings.MEDIA_URL ,
+                      document_root=settings.MEDIA_ROOT)
+```
+## add BANNER to POST MODEL  :
+### Dave_Gray/ myProject/ posts/ models.py:
+```py
+    banner = models.ImageField( default='fallback.png' , blank=True )
+```
+## MAKEMIGRATIONS & MIGRATE  :
+```sh
+cd myProject/
+python3 manage.py makemigrations
+> Migrations for 'posts':
+>   posts/migrations/0002_post_banner.py
+>     - Add field banner to post
+python3 manage.py migrate
+> Operations to perform:
+>   Apply all migrations: admin, auth, contenttypes, posts, sessions
+> Running migrations:
+>   Applying posts.0002_post_banner... OK
+```
+## Log as Admin & UPLOAD IMAGES
+```sh
+python3 manage.py runserver
+> Starting development server at http://127.0.0.1:8000/
+```
+http://127.0.0.1:8000/admin/posts/post/  -> upload images 
+
+Title:      My 2nd post
+Body:       This is trash just to complete the data and in not being empty
+slug:       secod-post
+Banner:
+    Currently:  neofetch.jpg    ☐ Clear
+    Change:     [CHOOSE FILE]       <==== Upload
+    No file chosen
+## add IMAGES to TEMPLATES  
+###  post_page.html   &    post_list.html :
+```html
+    <img
+        class="banner" 
+        src="{{ post.banner.url }}" 
+        alt="{{ post.title }}" >
+```
+## STYLE IMAGE FULLSCREEN
+### Dave_Gray/ myProject/ static/ css/ style.css :
+```css
+.banner {
+    display: block;
+    width: 100%;
+    max-width: 800px;
+}
+```
+
+# VIDEO 8/12                Challenge & Solution
+
+## ASIGNMENT :
+
+1) Make a User App to the project
+2) Create Template : register.html
+3) Rout the endpoint to :  127.0.01:8000/users/register
+
+## SOULUTION :
+
+1) * (A)  CREATE APP in console :
+```sh
+    python3 manage.py startapp users
+```
+   * (B)  Register the APP  settings.py :
+```py
+    INSTALLED_APPS = [
+        "users",
+        "posts", ... ]
+```  
+   * (C)  ROUT APP in myProject/ urls.py :
+```py
+    path('users/', include('users.urls' )), # Project.APP.view
+```
+2)  * (A)  Create folder Templates/users inside Users
+    * (B)  Create users.html in  Templates/users/users.html:
+```html
+    {% extends "layout.html" %}
+
+    {% block title%}
+        Users
+    {% endblock %}
+
+    {% block content%}
+        <h1> Users </h1>
+        <p> checkout    <a href="/">Home</a>     page  </p>
+    {% endblock %}
+```
+3) * (A)  CREATE VIEW users() in myProject/ users/ views.py :
+```py
+from django.shortcuts import render
+
+# Create your views here.
+def users(request):
+    context = None
+    return render(request, 'users/users.html', context )
+```
+   * (B)  CREATE URLS & ROUT VIEW users() to myProject/ users/ urls.py :
+```py
+from django.urls import path
+from . import views 
+
+urlpatterns = [
+    path(''                 , views.users, name='users'),
+#  <path converter: parameter>     view             name
+]
+```
+
+# VIDEO 9/12                User Registration
+# VIDEO 10/12               Login Form  &  User Authentication
+# VIDEO 11/12               User Authorization
+# VIDEO 12/12               Django Forms
+

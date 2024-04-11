@@ -13,6 +13,11 @@
                     {{ post.title }}
                 </a>
             </h2>
+            <section>
+                <img
+                    class="banner" 
+                    src="{{ post.banner.url }}" 
+                    alt="{{ post.title }}" >
             <p> {{ post.date  }} </p>
             <p> {{ post.body  }} </p>
         </article>
