@@ -7,4 +7,12 @@
 {% block content%}
     <h1> Users </h1>
     <p> checkout    <a href="/">Home</a>     page  </p>
+    <form  action="/users/register/" method="post" 
+           class="form-with-validation" > 
+        {% csrf_token %}
+        {{ form }} 
+        <button type="submit" > Submit </button> 
+    </form>
 {% endblock %}
+
+# #region ADD

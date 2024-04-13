@@ -574,7 +574,6 @@ Banner:
 1) Make a User App to the project
 2) Create Template : register.html
 3) Rout the endpoint to :  127.0.01:8000/users/register
-
 ## SOULUTION :
 
 1) * (A)  CREATE APP in console :
@@ -592,7 +591,7 @@ Banner:
     path('users/', include('users.urls' )), # Project.APP.view
 ```
 2)  * (A)  Create folder Templates/users inside Users
-    * (B)  Create users.html in  Templates/users/users.html:
+    * (B)  Create register.html in  Templates/users/register.html:
 ```html
     {% extends "layout.html" %}
 
@@ -612,7 +611,7 @@ from django.shortcuts import render
 # Create your views here.
 def users(request):
     context = None
-    return render(request, 'users/users.html', context )
+    return render(request, 'users/register.html', context )
 ```
    * (B)  CREATE URLS & ROUT VIEW users() to myProject/ users/ urls.py :
 ```py
@@ -625,7 +624,73 @@ urlpatterns = [
 ]
 ```
 
+
+
 # VIDEO 9/12                User Registration
+
+## USE DJANGO USER FORM     1:30
+### Dave_Gray/ myProject/ users/ views.py :
+```py
+from django.contrib.auth.forms import UserCreationForm
+# Create your views here.
+def register(request):
+    form = UserCreationForm( )
+    # context = { "form": form }
+    return render( request, 'users/register.html',
+                   { "form": form } )
+```
+### Dave_Gray/ myProject/ users/ templates/ users/ register.html :
+```py
+{% block content%}
+    <h1> Users </h1>
+    <p> checkout    <a href="/">Home</a>     page  </p>
+    <form  action="/users/register/" method="post" 
+           class="form-with-validation" > 
+        {% csrf_token %}
+        {{ form }} 
+        <button type="submit" > Submit </button> 
+    </form>
+{% endblock %}
+```
+
+## CONDITIONAL LOGIC        7:50 
+
+### USERS VIEWS
+```py
+def register(request):
+    if request.method == "POST":  # POST -> FORM WAS SUBMITED    
+        form = UserCreationForm(request.POST)   # load filled form
+        if form.is_valid():
+            form.save()                         # Save User
+            return redirect("posts:list")           # redirect to Post List (ReverseMatch)
+        else:     # redirect("APP:VIEW")
+            print("INVALID FORM")
+    else:                       #  GET ->  FORM IS REQUESTED                       
+        form = UserCreationForm( )              # Show empty form for Submition 
+        print("FORM IS REQUESTED")
+    return render( request, 'users/register.html', # SHOW ANY FORM
+                   { "form": form } )
+```
+### CHANGE USER URLS
+```py
+app_name = 'posts'      # WE ADD APP NAME
+urlpatterns = [
+    path(''                 , views.posts_list, name='list'), ]
+```
+
+### FIX TEMPLATES
+```py
+            <a href="{% url 'posts' %}" > 
+            #  layout.html         CHANGED AS FOLLOW
+            <a href="{% url 'posts:list' %}" >   # APP:VIEW
+
+            <a href="{% url 'page'       slug=post.slug %}">
+            #  posts_list.html  :  CHANGED AS FOLLOW
+            <a href="{% url 'posts:page' slug=post.slug %}">
+            # posts = app    post = {{ context variable }}
+```
+
+
 # VIDEO 10/12               Login Form  &  User Authentication
 # VIDEO 11/12               User Authorization
 # VIDEO 12/12               Django Forms
