@@ -1,8 +1,64 @@
 https://www.youtube.com/playlist?list=PL0Zuz27SZ-6NamGNr7dEqzNFEcZ_FAUVX
 https://github.com/gitdagray/django-course/
+
+# OVERVIEW
+PROJECT & APP :
+```sh
+django-admin startproject NAME    # creates manage.py & in a Project direcory : settings.py urls.py views.py 
+django-admin startapp     NAME    # creates APP dierectory  ( does't make  urls.py )
+python3 manage.py runserver       # 127.0.0.1:8000
+python3 manage.py createsuperuser # ADMIN
+python3 manage.py shell           # Django shell
+```
+URLS :
+```py
+#  APP_URL      path('APP/', include('APP.urls' )), 
+#  VIEW_URL     path('URL'          , views.function,  name='view_name'),
+#  VIEW_URL     path('<slug:slug>'  , views.function , name='view_name'),
+                # <Path_Converte:Parameter>'  Parameter= Row of SQL table by MODELS & ORM 
+#  TEMPLATE     {% url  'app_name:view_name'  param1=value1  param2=value2  %}
+#  REDIRECT     reverse('app_name:view_name' )
+```
+SETTINGS :
+```py
+# INSTALLED_APPS = [ "APP1", "APP2", ... etc ]
+# TEMPLATES  = [   { "DIRS": ['templates'], ...  }   ]
+# STATIC_URL = "static/"   STATICFILES_DIRS = [ os.path.join(BASE_DIR,'static')  ]
+# MEDIA_URL  = 'media/'          MEDIA_ROOT =   os.path.join(BASE_DIR, 'media' )
+```
+MODELS:
+```py
+        models.py:  # class Post(models.Model):
+        admin.py :  # admin.site.register( MODEL )
+        makemigrations: # python3 manage.py makemigrations 
+        migrate :       # python3 manage.py migrate 
+        superuser:      # python3 manage.py createsuperuser
+        SQL_shell:      # python3 manage.py shell
+```
+TEMPLATES:
+```py
+{{ variable }}       # passed as context in views.py
+{% static 'FILE' %}  # file mist be inside static directory
+{% csrf_token    %}  # forms require token
+{% url  <path>   %} # <a href='USE IT HERE'>
+{% extends "base.html" %}
+{% block <title>  %}            CONTENT            {% endblock %}
+{% for <elem> in <context> %}   {{ elem.param }}   {% endfor %}
+```
+VIEWS:
+```py
+def view_function (request):
+    instance = MODEL.objects.all().order_by("-FIELD")     # Reverse order by specified FIELD 
+    context  = { "MODEL": instance }
+    return render( request, 'APP/file.html',  context )   # full path = APP/Template/APP/file.html
+    return redirect("APP:view_name")                      # using ReverseMatch
+    return HttpResponse("AS HTML CONTENT" )               # for debugging purposes
+```
+
 #  VIDEO 1/12               Introduction and Beginners
 
-##  UPDATE TO DJANGO 5
+## UPDATE TO DJANGO 5
+
 
 ```sh
 cd Dave_Gray/
@@ -24,7 +80,7 @@ pip list | grep django
 pip list | grep Django
 > Django                   5.0.4
 ```
-##  START PROJECT
+## START PROJECT
 ```sh
 django-admin startproject myProject
 python3 manage.py runserver
@@ -32,7 +88,7 @@ python3 manage.py runserver
 > Starting development server at http://127.0.0.1:8000/
 > [07/Apr/2024 00:23:59] "GET / HTTP/1.1" 200 292
 ```
-##  ROURING                  10:00
+## ROURING                  10:00
 ###     Dave_Gray/ myProject/ url.py :
 ```py
 from . import views 
@@ -50,7 +106,7 @@ def homepage(request):
 def about(request):
     return HttpResponse("this is /about")
 ```
-##  TEMPLATES                15:00
+## TEMPLATES                15:00
 ###     Dave_Gray/ myProject/ myProject/ settings.py : : 
 ```json
 TEMPLATES = [
@@ -191,7 +247,7 @@ python3 manage.py runserver
 >Starting development server at http://127.0.0.1:8000/
 ```
 BROWSER -->  http://127.0.0.1:8000/posts/
-## DJANGO TEPMLATE        13:00
+## DJANGO TEPMLATE          13:00
 ### Dave_Gray/ myProject/ templates/ layout.html :
 ```html
 <!DOCTYPE html>
@@ -442,7 +498,8 @@ We use slug
 ### Dave_Gray/ myProject/ posts/ urls.py :
 ```py
     path  (  '<slug:slug>'      ,  views.post_page, name='page'),
-# < path_converter : parameter >    view.function   name for reversing
+# < path_converter : parameter >    view.function   URL_App_name for reversing
+# this URL uses a Slug path_converter to search the parameter slug inside the posts_post (App_Model) SQL table created by ORM
 ```
 ## PATH REVERSING           10:00
 ### Dave_Gray/ myProject/ posts/ templates/ posts/ posts_list.html :
@@ -569,14 +626,15 @@ Banner:
 
 # VIDEO 8/12                Challenge & Solution
 
-## ASIGNMENT :
+## ASIGNMENT :              0:42
 
 1) Make a User App to the project
 2) Create Template : register.html
 3) Rout the endpoint to :  127.0.01:8000/users/register
-## SOULUTION :
-
-1) * (A)  CREATE APP in console :
+4) 
+## SOULUTION :              2:30
+### 1 APP & URL
+   * (A)  CREATE APP in console :
 ```sh
     python3 manage.py startapp users
 ```
@@ -589,9 +647,10 @@ Banner:
    * (C)  ROUT APP in myProject/ urls.py :
 ```py
     path('users/', include('users.urls' )), # Project.APP.view
-```
-2)  * (A)  Create folder Templates/users inside Users
-    * (B)  Create register.html in  Templates/users/register.html:
+``` 
+### 2 TEMPLATE
+   * (A)  Create folder Templates/users inside Users
+   * (B)  Create register.html in  Templates/users/register.html:
 ```html
     {% extends "layout.html" %}
 
@@ -604,7 +663,8 @@ Banner:
         <p> checkout    <a href="/">Home</a>     page  </p>
     {% endblock %}
 ```
-3) * (A)  CREATE VIEW users() in myProject/ users/ views.py :
+### 3 VIEW
+   * (A)  CREATE VIEW users() in myProject/ users/ views.py :
 ```py
 from django.shortcuts import render
 
@@ -618,8 +678,10 @@ def users(request):
 from django.urls import path
 from . import views 
 
+app_name = 'users'      # name for URL ReverseMatch
+
 urlpatterns = [
-    path(''                 , views.users, name='users'),
+    path('register/'     , views.register, name='register'),
 #  <path converter: parameter>     view             name
 ]
 ```
@@ -628,17 +690,17 @@ urlpatterns = [
 
 # VIDEO 9/12                User Registration
 
-## USE DJANGO USER FORM     1:30
+## DJANGO USER FORM in VIEWS        1:30
 ### Dave_Gray/ myProject/ users/ views.py :
 ```py
 from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
 def register(request):
     form = UserCreationForm( )
-    # context = { "form": form }
     return render( request, 'users/register.html',
                    { "form": form } )
-```
+```                         
+## DJANGO USER FORM in TEMPLATE     3:10
 ### Dave_Gray/ myProject/ users/ templates/ users/ register.html :
 ```py
 {% block content%}
@@ -652,9 +714,7 @@ def register(request):
     </form>
 {% endblock %}
 ```
-
-## CONDITIONAL LOGIC        7:50 
-
+## CONDITIONAL LOGIC                7:50 
 ### USERS VIEWS
 ```py
 def register(request):
@@ -671,27 +731,107 @@ def register(request):
     return render( request, 'users/register.html', # SHOW ANY FORM
                    { "form": form } )
 ```
+## CHANGE & FIX VIWE NAMES 
 ### CHANGE USER URLS
+in CONDITIONAL LOGIC we redirected...   redirect("posts:list")
+this ReverseSearch name does not exist couse i forgot this line
 ```py
-app_name = 'posts'      # WE ADD APP NAME
+app_name = 'posts'      # ADD APP NAME  (I FORGOT)
 urlpatterns = [
     path(''                 , views.posts_list, name='list'), ]
 ```
-
 ### FIX TEMPLATES
+
 ```py
             <a href="{% url 'posts' %}" > 
             #  layout.html         CHANGED AS FOLLOW
-            <a href="{% url 'posts:list' %}" >   # APP:VIEW
+            <a href="{% url 'posts:list' %}" >      # APP:VIEW
 
-            <a href="{% url 'page'       slug=post.slug %}">
+            <a href="{% url 'page'          slug=post.slug %}">
             #  posts_list.html  :  CHANGED AS FOLLOW
-            <a href="{% url 'posts:page' slug=post.slug %}">
-            # posts = app    post = {{ context variable }}
+            <a href="{% url 'posts:page'    slug=post.slug %}">
+```
+## UPDATE NAVBAR                    14:00
+###
+```py
+            <a href="{% url 'posts:list' %}" title="Log in">  
+                <span role="img" aria-label="log in"> 🪪 </span>    Log in
+            </a>
 ```
 
 
 # VIDEO 10/12               Login Form  &  User Authentication
+## ADD REGISTER IN NAVBAR           1:50
+```py
+            <a href="{% url 'users:register' %}" title="Log in">  
+                <span role="img" aria-label="log in"> 🔑 </span>    Log in
+            </a>
+```
+## ADD REGISTER TO URLS             3:30
+```py
+    path('login/'       , views.login_view, name='login'),
+```
+## ADD REGISTER VIEWS               4:40
+```py
+def register(request):
+    print("REGISTER")
+    if request.method == "POST":        # POST -> FORM WAS SUBMITED    
+        form = UserCreationForm(request.POST)       # load filled form
+        if form.is_valid():
+            login(request,form.save())              # Save User
+            return redirect("posts:list")           # redirect to Post List (ReverseMatch)
+        else:     
+            print("INVALID REGISTER")
+    else:                               #  GET ->  FORM IS REQUESTED                       
+        form = UserCreationForm( )                  # Show empty form for Submition 
+        print("REGISTER IS REQUESTED")
+    return render( request, 'users/register.html',  # SHOW ANY FORM
+                   { "form": form } )
+```
+## ADD LOGIN TEMPLATE FORM          7:40
+```py
+{% extends "layout.html" %}
+
+{% block title%}
+    User Log in
+{% endblock %}
+
+{% block content%}
+    <h1> User Log in </h1>
+    <p> checkout    <a href="/">Home</a>     page  </p>
+    <form  action="/users/login/" method="post" 
+           class="form-with-validation" > 
+        {% csrf_token %}
+        {{ form }} 
+        <button type="submit" > Submit </button> 
+    </form>
+{% endblock %}
+```
+## ADD LOGIN VIEWS                  12:30
+```py
+from django.contrib.auth import login
+
+def login_view(request):
+    print("LOGIN")
+    if request.method == "POST":         # POST -> FORM WAS SUBMITED    
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            login(request, form.get_user())     # log in from form data
+            print("VALID LOG")
+            return redirect("posts:list")       # redirect to Posts List (ReverseMatch)
+        else:
+            print("INVALID LOGIN")
+    else:                               #  GET ->  FORM IS REQUESTED 
+        form = AuthenticationForm()             # Show empty form for Submition 
+        print("LOG IS REQUIRED ")
+    return render( request, 'users/login.html', # SHOW ANY FORM
+                { "form": form } )
+```
+
 # VIDEO 11/12               User Authorization
+
+```py
+    path('logout/'    , views.logout_view, name='logout'),
+```
 # VIDEO 12/12               Django Forms
 

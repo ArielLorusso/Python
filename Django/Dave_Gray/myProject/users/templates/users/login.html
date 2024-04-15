@@ -1,16 +1,17 @@
 {% extends "layout.html" %}
 
 {% block title%}
-    User Registration
+    User Log in
 {% endblock %}
 
 {% block content%}
-    <h1> User Registration </h1>
+    <h1> User Log in </h1>
     <p> checkout    <a href="/">Home</a>     page  </p>
-    <form  action="/users/register/" method="post" 
+    <form  action="/users/login/" method="post" 
            class="form-with-validation" > 
         {% csrf_token %}
         {{ form }} 
         <button type="submit" > Submit </button> 
     </form>
 {% endblock %}
+

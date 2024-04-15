@@ -15,19 +15,28 @@
 <body>
     <nav>
         <div>
-            <a href="/" > 
+            <a href="/" title="Home"> 
                 <span role="img" aria-label="Home"> 🏠 </span>      Home 
             </a>  
         </div>
-        |
         <div>
-            <a href="/about"> 
+            <a href="/about" title="About"> 
                 <span role="img" aria-label="About"> 🌐 </span>     About
             </a> 
         </div>
         <div>
-            <a href="{% url 'posts:list' %}" >  
-                <span role="img" aria-label="Posts"> 🗞️ </span>     News
+            <a href="{% url 'posts:list' %}" title="Posts">  
+                <span role="img" aria-label="Posts"> 🗞️ </span>     Posts
+            </a>
+        </div>
+        <div>
+            <a href="{% url 'users:register' %}" title="Register">  
+                <span role="img" aria-label="Register"> 🪪 </span>    Register
+            </a>
+        </div>
+        <div>
+            <a href="{% url 'users:login' %}" title="Log in">  
+                <span role="img" aria-label="log in"> 🔑 </span>    Log in
             </a>
         </div>
     </nav>
@@ -39,9 +48,11 @@
 </html>
 
 {% comment %}  USEFULL EMOJIS  https://emojipedia.org/shopping-cart
+https://emojipedia.org/huawei  https://unicode.org/emoji/charts/full-emoji-list.html
 🏠🏢🏦🌏🕐🌐🌗🔗🛡️📅📋📧📩📎🔑🔓🔒👍👎📰🗞️📜📄📑📝🪧🗣️💡
-ℹ️©️®️💬🛒💲💰💵💳📊📈📉🎓👁️‍🗨️🔍🔎✂️⚙️✈️🚓🚛🛵📦🗑️🔥🚨🛟
+ℹ️©️®️💬🛒💲💰💵💳📊📈📉🎓👁️‍🗨️🔍🔎✂️⚙️✈️🛬🛫🚓🚛🛵📦🗑️🔥🚨🛟
 🚫⛔☢️⚠️✅❎♀️♂️📌💾📷📸🎬🎞️📀🔧🏷️
 🎵🎧📀🔈🔉🔊🔇💎👑📣🔔🔕✏️📞📖📓📕📗📘📙📒
 ♻️🆕⏯️⏸️▶️⏹️⏺️⏏️🔴🟠🟡🟢🔵🟣🟤⚫🪪🌗❤️
+↘️⬇️↙️⬅️↖️➡️🔁
 {% endcomment %}
