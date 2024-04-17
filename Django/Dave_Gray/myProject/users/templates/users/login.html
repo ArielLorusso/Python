@@ -10,8 +10,12 @@
     <form  action="/users/login/" method="post" 
            class="form-with-validation" > 
         {% csrf_token %}
-        {{ form }} 
-        <button type="submit" > Submit </button> 
+        {{ form }}
+        {% if request.GET.next %}
+        <input type="hidden" name="next" value="{{ request.GET.next }}">
+        <!-- Hidden form element used for redirection -->
+        {% endif %}
+        <button type="submit" > SUBMIT </button> 
     </form>
 {% endblock %}
 

@@ -1,64 +1,149 @@
-/*  RESET */
 * {
-    margin : 0;
+    margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
+
+
 
 body {
     min-height: 100vh;
-    display: grid;
-    place-content: center;
+    background-color: black;
+    color: whitesmoke;
     font-size: 3rem;
-    background-color: #222;
-    color: #FFF;
-}
-
-main {
-    flex-grow: 1;
-    display: grid;
-    place-content: center;
 }
 
 nav {
-    position: absolute;
-    display:inline;
-    padding: 20pt;
-    width:100vw;
-    background-color: #296;
-}
-nav > div {
-    display: inline;
-    padding: 10pt;
-    margin: 20pt;
-    border: #222;
-    border-style: solid;
-    border-radius: 5pt;
-}
-nav > div:hover {
-    background-color: #074;
-}
-main > a {
-    color: #80F;
-}
-main > a:visited {
-    color: #8FF;
-}
+    width: 100vw;
+    height: auto;
+    position: relative;
+    padding: 1rem;
 
-
-
-nav > div > a {
-    font-weight: bolder;
-    color: #000;
+    background-color: #06f;
+    color: white;
+    font-size: 2.5rem;
+    
+    
+    display: inline-flex;
+    flex-wrap: wrap; 
+    justify-content: space-evenly;
+    align-items: center;
+}
+.nav-button{
+    text-decoration: none;
+    color: #fff;
+    background-color: #2600ff;
+    border: rgb(0, 0, 0);
+    border-radius: 10pt;
+    padding: 4pt;
+    margin-bottom: 4pt;
+    border-style:solid;
+}
+.nav-button:hover{
+    background-color: #000611;
 }
 
+main {
+    padding: 1rem;
+}
 
+section {
+    display: flex;
+    flex-flow: column;
+    gap: 1rem;
+}
 
-h1, p {
-    text-align: center;
+h1,
+h2 {
+    font-size: 2.5rem;
+}
+
+p {
+    font-size: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: #06f;
+    text-decoration: underline;
+}
+
+a:hover {
+    opacity: .85;
 }
 
 .banner {
-    display: inline;
-    width: 20%;
+    display: block;
+    width: 100%;
     max-width: 800px;
+}
+
+.form-with-validation {
+    max-width: 600px;
+    font-size: 1rem;
+    padding: 1rem;
+    display: flex;
+    flex-flow: column;
+    gap: 1rem;
+}
+
+.form-with-validation div {
+    display: flex;
+    flex-flow: column;
+    gap: 0.5rem;
+}
+
+.form-with-validation input {
+    padding: 0.25rem;
+    max-width: 300px;
+}
+.form-with-validation button {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 900;
+    font-family: 'Courier New', Courier, monospace;
+    font-feature-settings: "cswh";
+    background-color: #0040a8;
+    padding: 0.25rem;
+    max-width: 300px;
+}
+
+.form-submit {
+    padding: 0.5rem;
+    border-radius: 10px;
+    width: 125px;
+}
+
+.helptext {
+    font-size: 1rem;
+    margin-left: 1rem;
+}
+
+.helptext ul {
+    list-style-type: none;
+}
+
+.errorlist {
+    color: #F00;
+    margin-left: 2rem;
+}
+
+.errorlist li::marker {
+    content: '🚨 ';
+}
+
+
+.logout {
+    display: inline-block;
+}
+
+#nav-logout{
+    color: #ffffff;
+    font-size: 2.5rem;   
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+.logout-button:hover {
+    opacity: .85;
 }

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 
 CONSTANT = True
 a = True
@@ -27,17 +27,26 @@ def login_view(request):
     if request.method == "POST":         # POST -> FORM WAS SUBMITED    
         form = AuthenticationForm(data=request.POST)
         if form.is_valid():
+            print("VALID LOGIN")
             login(request, form.get_user())     # log in from form data
-            print("VALID LOG")
+            if 'next' in request.POST:
+                print("LOGIN URL NEXT QUERRY")
+                return redirect(request.POST.get('next')) # redirect NewPost
             return redirect("posts:list")       # redirect to Posts List (ReverseMatch)
         else:
             print("INVALID LOGIN")
     else:                               #  GET ->  FORM IS REQUESTED 
-        form = AuthenticationForm()             # Show empty form for Submition 
         print("LOG IS REQUIRED ")
+        form = AuthenticationForm()             # Show empty form for Submition 
     return render( request, 'users/login.html', # SHOW ANY FORM
                 { "form": form } )
 
+def logout_view(request):
+    print("LOGOUT")
+    if request.method == "POST":         # POST -> FORM WAS SUBMITED
+        logout(request)                     # logout
+        return redirect("posts:list")       # redirect to Posts List (ReverseMatch)
+        
 
 
 # Fotrm woth validatiom

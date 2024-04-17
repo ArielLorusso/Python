@@ -14,32 +14,43 @@
 </head>
 <body>
     <nav>
-        <div>
-            <a href="/" title="Home"> 
+
+            <a href="/" title="Home" class="nav-button"> 
                 <span role="img" aria-label="Home"> 🏠 </span>      Home 
             </a>  
-        </div>
-        <div>
-            <a href="/about" title="About"> 
+
+            <a href="/about" title="About" class="nav-button"> 
                 <span role="img" aria-label="About"> 🌐 </span>     About
             </a> 
-        </div>
-        <div>
-            <a href="{% url 'posts:list' %}" title="Posts">  
+
+            <a href="{% url 'posts:list' %}" title="Posts" class="nav-button">  
                 <span role="img" aria-label="Posts"> 🗞️ </span>     Posts
             </a>
-        </div>
-        <div>
-            <a href="{% url 'users:register' %}" title="Register">  
-                <span role="img" aria-label="Register"> 🪪 </span>    Register
-            </a>
-        </div>
-        <div>
-            <a href="{% url 'users:login' %}" title="Log in">  
-                <span role="img" aria-label="log in"> 🔑 </span>    Log in
-            </a>
-        </div>
-    </nav>
+
+            {% if user.is_authenticated %}
+                <a href="{% url 'posts:new-post' %}" title="New Post" class="nav-button">  
+                    <span role="img" aria-label="New Post"> 🆕 </span>    New Post
+                </a>
+
+                
+                <form  action="{% url 'users:logout'%}" method="post" >
+                    {% csrf_token %}
+                    <button type="submit" class="nav-button" id="nav-logout" aria-label="User Logout" 
+                    title="User Logout">🔒 Log out</button>
+                </form>
+
+            {% else %} <!-- NOT LOGGED IN-->
+                <a href="{% url 'users:register' %}" class="nav-button" title="Register">  
+                    <span role="img"  aria-label="Register">
+                    🪪 </span>    Register
+                </a>
+                <a href="{% url 'users:login' %}" class="nav-button" title="Log in">  
+                    <span role="img"  aria-label="log in">
+                    🔑 </span>     Log in
+                </a>
+            {% endif %}
+            
+        </nav>
     <main>
         {% block content%}
         {% endblock %}

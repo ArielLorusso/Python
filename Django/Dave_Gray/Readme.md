@@ -27,13 +27,24 @@ SETTINGS :
 # MEDIA_URL  = 'media/'          MEDIA_ROOT =   os.path.join(BASE_DIR, 'media' )
 ```
 MODELS:
-```py
+```py 
         models.py:  # class Post(models.Model):
         admin.py :  # admin.site.register( MODEL )
         makemigrations: # python3 manage.py makemigrations 
         migrate :       # python3 manage.py migrate 
         superuser:      # python3 manage.py createsuperuser
         SQL_shell:      # python3 manage.py shell
+        instance.save()
+objects.create()
+objects.get()
+objects.update()
+objects.delete()
+objects.filter()
+objects.count()
+objects.last()
+objects.first()
+objects.union()
+objects.intersection()
 ```
 TEMPLATES:
 ```py
@@ -42,8 +53,9 @@ TEMPLATES:
 {% csrf_token    %}  # forms require token
 {% url  <path>   %} # <a href='USE IT HERE'>
 {% extends "base.html" %}
-{% block <title>  %}            CONTENT            {% endblock %}
-{% for <elem> in <context> %}   {{ elem.param }}   {% endfor %}
+{% block <title>  %}            CONTENT             {% endblock %}
+{% for <elem> in <context> %}   {{ elem.param }}    {% endfor %}
+{% if  <elem =! 0> %}           HTML                {% endif %}
 ```
 VIEWS:
 ```py
@@ -830,8 +842,159 @@ def login_view(request):
 
 # VIDEO 11/12               User Authorization
 
+## LOGOUT URL               1:20         
 ```py
     path('logout/'    , views.logout_view, name='logout'),
 ```
+## LOGOUT VIEW              2:00
+```py
+from django.contrib.auth import login, logout
+
+def logout_view(request):
+    print("LOGIN")
+    if request.method == "POST":         # POST -> FORM WAS SUBMITED
+        logout(request)                     # logout
+        return redirect("posts:list")       # redirect to Posts List (ReverseMatch)
+        
+```
+## LOGOUT Layout.html       4:20
+```html
+        <form class="logout" action="{% url 'users:logout'%}" method="post">
+            {% csrf_token %}
+            <button class="logout-button" aria-label="User Logout" title="User Logout"> 
+                <a>🔒 Log out </a>
+            </button>
+        </form>
+```
+## NEWPOST URL              8:00
+```py
+    path('new-post/'        , views.post_new ,  name='new-post'),   
+```
+## NEWPOST VIEW             9:08
+```py
+@login_required(login_url="/users/login")   # THIS REDIRECTS TO LOG IN
+def post_new (request):                     # contains a next query
+    return render( request, 'posts/post_new.html')
+```
+`@login_required`    decorator :
+typically `redirects` including a `query` parameter named `next` in the URL. 
+This parameter contains the URL the user originally requested 
+before being redirected to the login page.
+
+in this case :
+        REDURECS TO :                        QUERY:
+        http://127.0.0.1:8000/users/login/   ?next=/posts/new-post/
+## NEWPOST TEMPLATE         10:25
+```py
+{% extends "layout.html" %}
+
+{% block title%}
+    New Post
+    {% endblock %}
+    
+    {% block content%}
+    <section>
+        <h1> New Post</h1>
+    </section>
+{% endblock %}
+
+```
+## NEWPOST add to LAYOUT    12:00
+```py
+    <a href="{% url 'posts:new-post' %}" title="New Post">  
+        <span role="img" aria-label="New Post"> 🆕 </span>    New Post
+    </a>
+```
+## RETUNR AFTER LOGIN       16:20
+
+`<input type="hidden" name="next" value="{{ request.GET.next }}">`
+is responsable for returning to New post after login
+Will get used in `login_view()` to redirect back :
+```py
+        if 'next' in request.POST:
+            return redirect(request.POST.get('next'))
+```
+this line is the responsable for the URL
+127.0.0.1:8000/users/login/?next=/posts/new-post/
+ to contain the querry : `next=/posts/new-post/`
+
+This happen whe we enter   `new-post` without `log in` 
+    http://127.0.0.1:8000/posts/new-post/
+    will get redirected to :
+    http://127.0.0.1:8000/users/login/?next=/posts/new-post/
+    in order to it return automaticaly once we log
+
+This behaviour would not be used much once we make the Nav-Bar interactive
+
+### ADD NEXT TO LOGIN TEMPLATE 
+```html
+{% extends "layout.html" %}
+
+{% block title%}
+    User Log in
+{% endblock %}
+
+{% block content %}
+    <h1> User Log in </h1>
+    <p> checkout    <a href="/">Home</a>     page  </p>
+    <form  action="/users/login/" method="post" 
+           class="form-with-validation" > 
+        {% csrf_token %}
+        {{ form }}
+        {% if request.GET.next %}
+        <input type="hidden" name="next" value="{{ request.GET.next }}">
+        {% endif %}
+        <button type="submit" > Submit </button> 
+    </form>
+{% endblock %}
+```
+### ADD NEXT TO LOGIN_VIEW()
+```py
+def login_view(request):
+    print("LOGIN")
+    if request.method == "POST":         # POST -> FORM WAS SUBMITED    
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            print("VALID LOGIN")
+            login(request, form.get_user())     # log in from form data
+            if 'next' in request.POST:
+                print("LOGIN URL NEXT QUERRY")
+                return redirect(request.POST.get('next')) # redirect NewPost
+            return redirect("posts:list")       # redirect to Posts List (ReverseMatch)
+        else:
+            print("INVALID LOGIN")
+    else:                               #  GET ->  FORM IS REQUESTED 
+        print("LOG IS REQUIRED ")
+        form = AuthenticationForm()             # Show empty form for Submition 
+    return render( request, 'users/login.html', # SHOW ANY FORM
+                { "form": form } )
+```
+## INTERACTIVE NVAR LOGIC   20:46
+```html
+{% if user.is_authenticated %}
+                <a href="{% url 'posts:new-post' %}" title="New Post" class="nav-button">  
+                    <span role="img" aria-label="New Post"> 🆕 </span>    New Post
+                </a>
+
+                
+                <form  action="{% url 'users:logout'%}" method="post" >
+                    {% csrf_token %}
+                    <button type="submit" class="nav-button" id="nav-logout" aria-label="User Logout" 
+                    title="User Logout">🔒 Log out</button>
+                </form>
+
+            {% else %} <!-- NOT LOGGED IN-->
+                <a href="{% url 'users:register' %}" class="nav-button" title="Register">  
+                    <span role="img"  aria-label="Register">
+                    🪪 </span>    Register
+                </a>
+                <a href="{% url 'users:login' %}" class="nav-button" title="Log in">  
+                    <span role="img"  aria-label="log in">
+                    🔑 </span>     Log in
+                </a>
+            {% endif %}
+```
+
 # VIDEO 12/12               Django Forms
 
+## CUSTOM FORM NEW POST     
