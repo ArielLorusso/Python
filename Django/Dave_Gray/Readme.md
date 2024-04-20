@@ -51,7 +51,7 @@ TEMPLATES:
 {{ variable }}       # passed as context in views.py
 {% static 'FILE' %}  # file mist be inside static directory
 {% csrf_token    %}  # forms require token
-{% url  <path>   %} # <a href='USE IT HERE'>
+{% url  <path>   %}  # <a href='USE IT HERE'>
 {% extends "base.html" %}
 {% block <title>  %}            CONTENT             {% endblock %}
 {% for <elem> in <context> %}   {{ elem.param }}    {% endfor %}
