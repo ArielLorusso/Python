@@ -2,8 +2,6 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
 
-CONSTANT = True
-a = True
 def register(request):
     print("REGISTER")
     if request.method == "POST":        # POST -> FORM WAS SUBMITED    

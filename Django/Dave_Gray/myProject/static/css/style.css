@@ -69,14 +69,31 @@ a {
 }
 
 a:hover {
-    opacity: .85;
+    opacity: 1;
 }
 
+
+/* 
+img{
+} */
 .banner {
-    display: block;
-    width: 100%;
+    /* filter: blur(0vw); */
+    width: 30vw;
     max-width: 800px;
+    image-rendering:-moz-crisp-edges;
+    -ms-interpolation-mode:nearest-neighbor;
+    image-rendering:pixelated; 
 }
+
+section{
+    background-color: #226;
+    display: flex;
+    flex-flow: column;
+    gap: 1rem;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
 
 .form-with-validation {
     max-width: 600px;

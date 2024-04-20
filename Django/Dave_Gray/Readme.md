@@ -2,6 +2,16 @@ https://www.youtube.com/playlist?list=PL0Zuz27SZ-6NamGNr7dEqzNFEcZ_FAUVX
 https://github.com/gitdagray/django-course/
 
 # OVERVIEW
+```py
+# https://builtwithdjango.com/projects/
+```
+# SECURITY & OPTIMIZATION
+```py
+# https://docs.djangoproject.com/en/5.0/topics/security/
+# https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/#deployment-checklist
+# https://docs.djangoproject.com/en/5.0/topics/db/optimization/
+```
+
 PROJECT & APP :
 ```sh
 django-admin startproject NAME    # creates manage.py & in a Project direcory : settings.py urls.py views.py 
@@ -12,12 +22,19 @@ python3 manage.py shell           # Django shell
 ```
 URLS :
 ```py
-#  APP_URL      path('APP/', include('APP.urls' )), 
-#  VIEW_URL     path('URL'          , views.function,  name='view_name'),
-#  VIEW_URL     path('<slug:slug>'  , views.function , name='view_name'),
-                # <Path_Converte:Parameter>'  Parameter= Row of SQL table by MODELS & ORM 
-#  TEMPLATE     {% url  'app_name:view_name'  param1=value1  param2=value2  %}
-#  REDIRECT     reverse('app_name:view_name' )
+# https://docs.djangoproject.com/en/5.0/topics/http/urls/#how-django-processes-a-request
+# https://docs.djangoproject.com/en/dev/topics/http/urls/#url-namespaces-and-included-urlconfs
+# https://docs.djangoproject.com/en/5.0/topics/http/urls/#reverse-resolution-of-urls
+
+    path('APP/', include('APP.urls' )),                         #  APP_URL
+    path('URL'          , views.function,  name='view_name'),   #  VIEW_URL
+    path('<slug:slug>'  , views.function , name='view_name'),   #  VIEW_URL using SLUG
+#   <Path_Converter:Parameter>'  Parameter= Row of SQL table by MODELS & ORM 
+#  TEMPLATE     
+        {% url  'app_name:view_name'  param1=value1  param2=value2  %}  # REDIRECT in TEMPLATE
+#  VIEWS        
+        reverse('app_name:view_name' )      # REDIRECT in VIEWS.PY
+
 ```
 SETTINGS :
 ```py
@@ -28,37 +45,68 @@ SETTINGS :
 ```
 MODELS:
 ```py 
+# https://docs.djangoproject.com/en/5.0/#the-model-layer
+# https://docs.djangoproject.com/en/5.0/ref/models/fields/#primary-key
+# https://docs.djangoproject.com/en/5.0/ref/models/fields/#foreignkey
+# https://docs.djangoproject.com/en/5.0/ref/models/fields/#autofield    (text int bool image etc)
+# https://docs.djangoproject.com/en/5.0/ref/models/fields/#onetoonefield
+# https://docs.djangoproject.com/en/5.0/ref/models/fields/#attributes-for-fields-with-relations
+
         models.py:  # class Post(models.Model):
         admin.py :  # admin.site.register( MODEL )
         makemigrations: # python3 manage.py makemigrations 
         migrate :       # python3 manage.py migrate 
         superuser:      # python3 manage.py createsuperuser
         SQL_shell:      # python3 manage.py shell
-        instance.save()
-objects.create()
-objects.get()
-objects.update()
-objects.delete()
-objects.filter()
-objects.count()
-objects.last()
-objects.first()
-objects.union()
-objects.intersection()
+        instance.save() # VIEW.PY -> SAVE MODEL
+
+objects.create()    # https://docs.djangoproject.com/en/5.0/ref/models/querysets/#create
+                    # https://docs.djangoproject.com/en/5.0/ref/models/instances/#creating-objects
+objects.get()       # https://docs.djangoproject.com/en/5.0/ref/models/querysets/#get
+                    # https://docs.djangoproject.com/en/5.0/ref/models/instances/#updating-attributes-based-on-existing-fields
+objects.update()    # https://docs.djangoproject.com/en/5.0/ref/models/querysets/#update  
+objects.delete()    # https://docs.djangoproject.com/en/5.0/ref/models/querysets/#delete
+                    # https://docs.djangoproject.com/en/5.0/ref/models/instances/#deleting-objects
+objects.filter()    # https://docs.djangoproject.com/en/5.0/ref/models/querysets/#filter
+objects.count()     # https://docs.djangoproject.com/en/5.0/ref/models/querysets/#count
+objects.last()      # https://docs.djangoproject.com/en/5.0/ref/models/querysets/#last
+objects.first()     # https://docs.djangoproject.com/en/5.0/ref/models/querysets/#first
+objects.union()     # https://docs.djangoproject.com/en/5.0/ref/models/querysets/#union
+objects.intersection() # https://docs.djangoproject.com/en/5.0/ref/models/querysets/#intersection
 ```
 TEMPLATES:
 ```py
-{{ variable }}       # passed as context in views.py
-{% static 'FILE' %}  # file mist be inside static directory
-{% csrf_token    %}  # forms require token
-{% url  <path>   %}  # <a href='USE IT HERE'>
+# https://docs.djangoproject.com/en/5.0/#the-template-layer
+# https://docs.djangoproject.com/en/5.0/topics/templates/#support-for-template-engines  SETUP
+# https://docs.djangoproject.com/en/5.0/ref/templates/builtins/     TAGS  & FILTERS
+{{ <variable>  }}      
+{{ <variable> | <filter> }} 
+{% static 'FILE' %}  
+{% csrf_token    %} 
 {% extends "base.html" %}
 {% block <title>  %}            CONTENT             {% endblock %}
 {% for <elem> in <context> %}   {{ elem.param }}    {% endfor %}
-{% if  <elem =! 0> %}           HTML                {% endif %}
+{% if  <elem =! 0> %}        HTML       {% else %}  {% endif %}   
+{% firstof <var1> <var2> <var3>  %}     # returns first  non apty/false   element
+{% with <OPERATION_RESULT> as <name> %}             {% endwith }
+{% comment %}  This (server) comment wont be show   {% endcomment %} 
+{% autoescape on %}     {{ body }}                  {% endautoescape %}
+{% load <module> %}         # EXTEND Django with your custom_tags
+{% filter%}                                         {% endfilter%} 
+# https://docs.djangoproject.com/en/5.0/ref/templates/builtins/#built-in-filter-reference
+|length     |escape     |escapejs       |join:", "  |date       |time       |lower      |safe
+|default    |dictsort   |pluralize      |add:"2"    |addslashes |capfirst   |default_if_none:"nothing"
+|cut:" "    |center:"15"    |divisibleby:"3"        |floatformat:"-3"       |make_list  |phone2numeric 
+|linebreaks |iriencode  |json_script:"hello-data"   |lower  |random     |slugify    |timeuntil:from_date
+|truncatechars_html:7   |truncatewords_html:2       |upper 
+|urlencode:""  |urlize  |urlizetrunc:15 |wordwrap   |yesno
 ```
 VIEWS:
 ```py
+# https://docs.djangoproject.com/en/5.0/#the-view-layer
+# https://docs.djangoproject.com/en/5.0/topics/http/urls/#how-django-processes-a-request
+# https://docs.djangoproject.com/en/5.0/ref/template-response/#the-rendering-process
+# https://docs.djangoproject.com/en/5.0/ref/contrib/redirects
 def view_function (request):
     instance = MODEL.objects.all().order_by("-FIELD")     # Reverse order by specified FIELD 
     context  = { "MODEL": instance }
@@ -119,8 +167,8 @@ def about(request):
     return HttpResponse("this is /about")
 ```
 ## TEMPLATES                15:00
-###     Dave_Gray/ myProject/ myProject/ settings.py : : 
-```json
+###     Dave_Gray/ myProject/ myProject/ settings.py :
+```py
 TEMPLATES = [
     {   "DIRS": ['templates'],          }   ]
 ```
@@ -372,7 +420,7 @@ Because every `SQL table` needs a `primary key`
 
 # VIDEO 4/12                ORM Object Relational Mapping
 
-## DJANO SHELL ORM
+## DJANGO SHELL ORM
 ```sh
 python3 manage.py shell
 > Python 3.10.12  [GCC 11.4.0]
@@ -998,3 +1046,70 @@ def login_view(request):
 # VIDEO 12/12               Django Forms
 
 ## CUSTOM FORM NEW POST     
+### posts/ forms.py :     
+
+```py
+from django import forms
+from . import models
+
+
+class CreatePost(forms.ModelForm):
+    class Meta:
+        model = models.Post
+        fields = ['title','body','slug','banner']
+```
+
+### posts/ tempaltes/ posts/ post_new.html :     
+```html
+{% extends "layout.html" %}
+
+{% block title%}
+    New Post
+{% endblock %}
+    
+{% block content%}
+    <section>
+        <h1> New Post</h1>
+        <form class="form with validation"
+                action="{% url 'posts:new-post' %}"
+                method="post"
+                encytype="multipart/form-data">
+        </form>
+    </section>
+{% endblock %}
+
+```
+### posts/ views.py : 
+```py
+@login_required(login_url="/users/login")   # THIS REDIRECTS TO LOG IN
+def post_new (request):                     # contains a next query
+    if request.method =='POST':
+        form = forms.CreatePost(request.POST, request.FILES)    # FILLED FORM
+        if form.is_valid() :
+            print("HERE WE SHOULD SAVE POST")
+            return redirect('posts:list')
+        # else : no....  user wont be capable of fill unvalid form
+    else:    
+        form = forms.CreatePost()                                # EMPTY FORM
+        return render(request, 'posts/post_new.html', { 'form': form })
+
+```
+## RELATE POSTS -> USERS  SQL TABLES 
+```py
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
+    # SQL Tables :
+    #  POSTS --->  USERS        If user is deleted all its Post will also delete 
+    #   Many  to   One   Relationship
+    # POSTS : PRIMATY_KEY = POST_ID (AUTOMATIC)  
+    #         FOREIGN_KEY = USER PRIMARY KEY = USER_ID
+```
+## MIGRATE
+```sh
+python3 manage.py migrate
+> Operations to perform:
+>   Apply all migrations: admin, auth, contenttypes, posts, sessions
+Running migrations:
+>  Applying posts.0003_post_author... OK
+```
+
+https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/

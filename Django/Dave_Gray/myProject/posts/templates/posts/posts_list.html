@@ -18,8 +18,18 @@
                     class="banner" 
                     src="{{ post.banner.url }}" 
                     alt="{{ post.title }}" >
-            <p> {{ post.date  }} </p>
+            <pre> By {{ post.author }} </pre>
             <p> {{ post.body  }} </p>
+
+            {% with post.date|date:"Y-m-d H:i:s" as formatted_date %}
+            <p>Year:   {{ formatted_date|slice:"0:4"   }}</p>
+            <p>Month:  {{ formatted_date|slice:"5:7"   }}</p>
+            <p>Day:    {{ formatted_date|slice:"8:10"  }}</p>
+            <p>Hour:   {{ formatted_date|slice:"11:13" }}</p>
+            <p>Minute: {{ formatted_date|slice:"14:16" }}</p>
+            <p>Second: {{ formatted_date|slice:"17:19" }}</p>
+            {% endwith %}
+            
         </article>
         <br> <hr>
     {% endfor %}
